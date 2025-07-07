@@ -14,10 +14,12 @@ const Navbar = ({ onToggleSidebar }) => {
   return (
     <nav className="bg-black/60 backdrop-blur-md text-white px-4 py-3 flex justify-between items-center border-b border-gray-800 shadow-lg z-20 w-full">
       <div className="flex items-center gap-4">
+      {user && (
+      <button onClick={onToggleSidebar} className="md:hidden text-white">
+        <FiMenu size={24} />
+      </button>
+      )}  
 
-        <button onClick={onToggleSidebar} className="md:hidden text-white">
-          <FiMenu size={24} />
-        </button>
         <Link to={user ? "/dashboard" : "/"} className="text-2xl font-extrabold text-blue-400 tracking-wide hover:text-white transition">
           MAKAUT<span className="text-white">zone</span>
         </Link>

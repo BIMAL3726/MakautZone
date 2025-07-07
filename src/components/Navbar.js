@@ -14,7 +14,7 @@ const Navbar = ({ onToggleSidebar }) => {
   return (
     <nav className="bg-black/60 backdrop-blur-md text-white px-4 py-3 flex justify-between items-center border-b border-gray-800 shadow-lg z-20 w-full">
       <div className="flex items-center gap-4">
-        {/* Sidebar toggle for mobile */}
+
         <button onClick={onToggleSidebar} className="md:hidden text-white">
           <FiMenu size={24} />
         </button>
@@ -28,7 +28,7 @@ const Navbar = ({ onToggleSidebar }) => {
           <>
             {/* Avatar and greeting */}
             <div className="flex items-center space-x-2">
-              <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white uppercase shadow-inner">
+              <div className="hidden sm:flex w-9 h-9 rounded-full bg-blue-600 items-center justify-center font-bold text-white uppercase shadow-inner">
                 {user.name?.[0] || "U"}
               </div>
               <span className="text-blue-300 font-medium">Hi, {user.name.split(" ")[0]}</span>

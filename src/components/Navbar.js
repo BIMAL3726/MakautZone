@@ -41,10 +41,21 @@ const Navbar = ({ onToggleSidebar }) => {
             </button>
           </>
         ) : (
-          <>
-            <Link to="/login" className="text-blue-300 hover:text-white px-3 py-1 rounded transition">Login</Link>
-            <Link to="/register" className="text-blue-300 hover:text-white px-3 py-1 rounded transition">Register</Link>
-          </>
+        <div className="flex gap-2 sm:gap-4">
+          <Link
+            to="/login"
+            className="text-blue-300 hover:text-white px-3 py-1 rounded transition"
+          >
+            Login
+          </Link>
+          <Link
+            to="/register"
+            className="text-blue-300 hover:text-white px-3 py-1 rounded transition"
+          >
+            Register
+          </Link>
+        </div>
+
         )}
       </div>
     </nav>

@@ -9,19 +9,33 @@ const categories = ["Syllabus", "Notes", "Resources", "PYQ"];
 export default function UserDashboard() {
   const [selectedDept, setSelectedDept] = useState("CSE");
   const [selectedSem, setSelectedSem] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <div
       className="flex flex-col md:flex-row min-h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
-      {/* Sidebar hidden on small screens */}
+      {/* Desktop sidebar */}
       <div className="hidden md:block">
         <Sidebar selectedDept={selectedDept} onSelect={setSelectedDept} />
       </div>
 
+      {/* Mobile sidebar */}
+      {sidebarOpen && (
+        <div className="fixed inset-0 z-40 bg-black bg-opacity-80 md:hidden flex">
+          <div className="bg-gray-900 w-64 p-4 overflow-y-auto">
+            <Sidebar selectedDept={selectedDept} onSelect={(dept) => {
+              setSelectedDept(dept);
+              setSidebarOpen(false);
+            }} />
+          </div>
+          <div className="flex-1" onClick={() => setSidebarOpen(false)} />
+        </div>
+      )}
+
       <div className="w-full md:ml-64 bg-black bg-opacity-60">
-        <Navbar />
+        <Navbar onToggleSidebar={() => setSidebarOpen(!sidebarOpen)} />
 
         <div className="p-4 sm:p-6 text-white">
           <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
@@ -60,7 +74,7 @@ export default function UserDashboard() {
               <div className="mt-10 text-center">
                 <p className="text-lg text-white font-semibold bg-blue-600 inline-block px-6 py-2 rounded-full shadow cursor-pointer">Total Price: ₹799/-</p>
               </div>
-                 <div className="mt-10 text-right">
+              <div className="mt-10 text-right">
                 <button
                   onClick={() => setSelectedSem(null)}
                   className="bg-white text-black font-bold px-4 py-2 rounded-full shadow-md transition"

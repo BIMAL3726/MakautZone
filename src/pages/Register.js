@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // 
 import loginBg from '../assets/registerPhoto.jpg';
 
 export default function Register() {
+  const navigate = useNavigate(); 
+
   const [formData, setFormData] = useState({
     name: '',
     mobile: '',
@@ -30,7 +32,7 @@ export default function Register() {
         password,
       });
       alert("Registration Successful");
-      window.location.href = "/login";
+      navigate("/login"); 
     } catch (err) {
       alert(err.response?.data?.msg || "Something went wrong");
     }
@@ -42,11 +44,11 @@ export default function Register() {
       style={{ backgroundImage: `url(${loginBg})` }}
     >
       <div className="animate-slide-in backdrop-blur-lg bg-gray-900/80 text-white p-8 rounded-2xl shadow-2xl w-full max-w-md mx-4 border border-gray-700">
-
-       <div className="mb-6 text-center">
-            <Link to="/" className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full font-semibold shadow hover:bg-blue-100 transition">Go to Home</Link>
+        <div className="mb-6 text-center">
+          <Link to="/" className="inline-block bg-white text-blue-700 px-4 py-1.5 rounded-full font-semibold shadow hover:bg-blue-100 transition">
+            Go to Home
+          </Link>
         </div>
-
 
         <h2 className="text-2xl font-extrabold text-center text-blue-400 mb-6">
           Create an Account
